@@ -1,0 +1,34 @@
+<div class="dropped-files" *ngIf="droppedFiles?.length">
+    <ng-container *ngFor="let file of droppedFiles">
+        <div *ngIf="file.urlStyle" [style.background-image]="file.urlStyle">
+            <span class="remove" (click)="removeFile(file)">&times;</span>
+        </div>
+
+        <div>
+            <nb-icon *ngIf="!file.urlStyle" icon="file-text-outline" pack="nebular-essentials"></nb-icon>
+            <span class="remove" (click)="removeFile(file)">&times;</span>
+        </div>
+    </ng-container>
+</div>
+<div class="message-row">
+    <input nbInput
+           [status]="getInputStatus()"
+           (focus)="inputFocus = true"
+           (blur)="inputFocus = false"
+           (mouseenter)="inputHover = true"
+           (mouseleave)="inputHover = false"
+           [(ngModel)]="message"
+           [class.with-button]="showButton"
+           type="text"
+           placeholder="{{ fileOver ? 'Drop file to send' : 'Type a message' }}"
+           (keyup.enter)="sendMessage()">
+    <button nbButton
+            [status]="status || 'primary'"
+            *ngIf="showButton"
+            [class.with-icon]="!buttonTitle"
+            (click)="sendMessage()"
+            class="send-button">
+        {{ buttonTitle }}
+        发送
+    </button>
+</div>

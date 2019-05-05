@@ -1,0 +1,27 @@
+<div class="avatar" [style.background-image]="avatarStyle" *ngIf="!reply">
+    <ng-container *ngIf="!avatarStyle">
+        {{ getInitials() }}
+    </ng-container>
+</div>
+<div class="message">
+    <ng-container [ngSwitch]="type">
+
+        <chat2-msg-file *ngSwitchCase="'file'"
+                              [sender]="sender" [date]="date" [message]="message" [files]="files">
+        </chat2-msg-file>
+        <chat2-msg-quote *ngSwitchCase="'quote'"
+                         [sender]="sender" [date]="date" [message]="message" [quote]="quote">
+        </chat2-msg-quote>
+        <chat2-msg-link *ngSwitchCase="'link'"
+                         [sender]="sender" [date]="date" [message]="message" [link]="link">
+        </chat2-msg-link>
+        <nb-chat-message-map *ngSwitchCase="'map'"
+                             [sender]="sender" [date]="date"
+                             [message]="message" [latitude]="latitude" [longitude]="longitude">
+        </nb-chat-message-map>
+
+        <nb-chat-message-text *ngSwitchDefault
+                              [sender]="sender" [date]="date" [message]="message">
+        </nb-chat-message-text>
+    </ng-container>
+</div>

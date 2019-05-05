@@ -72,6 +72,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Chat',
         link: '/pages/extra-components/chat',
       },
+      {
+        title: 'MyChat',
+        link: '/pages/extra-components/mychat',
+      },
     ],
   },
   {

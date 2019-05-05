@@ -15,6 +15,7 @@ import { InfiniteListComponent } from './infinite-list/infinite-list.component';
 import { ListComponent } from './list/list.component';
 import { StepperComponent } from './stepper/stepper.component';
 import { CalendarKitFullCalendarShowcaseComponent } from './calendar-kit/calendar-kit.component';
+import { MyChatComponent } from './mychat/chat.component';
 
 const routes: Routes = [{
   path: '',
@@ -86,6 +87,10 @@ const routes: Routes = [{
     {
       path: 'chat',
       component: ChatComponent,
+    },
+    {
+      path: 'mychat',
+      component: MyChatComponent,
     },
   ],
 }];

@@ -1,0 +1,24 @@
+.message-row {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.nb-theme-cosmic chat2-form.success-chat .form button.btn {
+    background-color: #00d977;
+}
+.nb-theme-cosmic chat2-form .form button.btn.with-icon {
+    font-size: 3rem;
+    line-height: 1;
+    padding: 0 1.25rem 0 0.875rem;
+    text-align: center;
+}
+[dir=ltr] .nb-theme-cosmic chat2-form .form button.btn {
+    border-top-left-radius: 0;
+}
+[dir=ltr] .nb-theme-cosmic chat2-form .form button.btn {
+    border-bottom-left-radius: 0;
+}

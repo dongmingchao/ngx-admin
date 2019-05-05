@@ -1,0 +1,9 @@
+p.quote {
+    font-style: italic;
+    font-size: 0.875rem;
+    background: #494299;
+    color: #a1a1e5;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}

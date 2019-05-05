@@ -1,0 +1,12 @@
+.header {
+  color: #d1d1ff;
+  padding: 1.25rem;
+  border-bottom: 1px solid #342e73;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  font-weight: 500;
+}
+.header {
+  background-color: #00d977;
+  color: #ffffff;
+}
