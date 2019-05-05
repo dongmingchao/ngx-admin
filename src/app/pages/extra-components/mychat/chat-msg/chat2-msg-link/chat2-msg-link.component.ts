@@ -39,6 +39,6 @@ export class Chat2MsgLinkComponent {
      * Quoted message
      * @type {Date}
      */
-    @Input() link: string;
-
+    @Input() quote: string;
+    @Input() sssslink: string;
 }

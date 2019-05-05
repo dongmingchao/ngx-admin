@@ -11,17 +11,7 @@ import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
  */
 @Component({
     selector: 'chat2-msg-quote',
-    template: `
-        <p class="sender" *ngIf="sender || date">{{ sender }}
-            <time>{{ date  | date:'shortTime' }}</time>
-        </p>
-        <p class="quote">
-            {{ quote }}
-        </p>
-        <nb-chat-message-text [message]="message">
-            {{ message }}
-        </nb-chat-message-text>
-    `,
+    templateUrl: './chat2-msg-quote.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
     styleUrls: ['./chat2-msg-quote.component.css'],
 })
