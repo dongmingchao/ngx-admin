@@ -9,8 +9,15 @@
         <div class="row">
             <div class="chat-container col-md-12 col-lg-6 col-xxxl-6">
                 <chat2 title="Nebular Conversational UI" size="large" status="success">
-                    <chat-msg class='message' *ngFor="let msg of messages" [type]="msg.type" [message]="msg.text" [reply]="msg.reply"
-                              [sender]="msg.user.name" [date]="msg.date" [files]="msg.files" [quote]="msg.quote"
+                    <chat-msg class='message' *ngFor="let msg of messages"
+                              [type]="msg.type"
+                              [message]="msg.text"
+                              [reply]="msg.reply"
+                              [sender]="msg.user.name"
+                              [date]="msg.date"
+                              [files]="msg.files"
+                              [quote]="msg.quote"
+                              [link]="msg.link"
                               [latitude]="msg.latitude"
                               [longitude]="msg.longitude" [avatar]="msg.user.avatar">
                     </chat-msg>

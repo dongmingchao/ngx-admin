@@ -181,7 +181,7 @@ export const botReplies = [
             text: '',
             reply: false,
             type: 'link',
-            sssslink: 'github.com',
+            link: 'https://github.com',
             quote: 'GitHub!!!',
             date: new Date(),
             user: {

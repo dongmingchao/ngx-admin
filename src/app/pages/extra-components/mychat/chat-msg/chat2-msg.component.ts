@@ -65,7 +65,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
  */
 @Component({
     selector: 'chat-msg',
-    templateUrl: './chat2-msg.html',
+    templateUrl: './chat2-msg.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChatMsgComponent {

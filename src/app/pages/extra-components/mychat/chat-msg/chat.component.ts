@@ -23,7 +23,7 @@ import {NbComponentSize} from '../lib/component-size';
 import {NbComponentStatus} from '../lib/component-status';
 import {convertToBoolProperty} from '../lib/helpers';
 import {Chat2FormComponent} from './chat-form.component';
-import {ChatMsgComponent} from './chat-message.component';
+import {ChatMsgComponent} from './chat2-msg.component';
 
 /**
  * Conversational UI collection - a set of components for chat-like UI construction.

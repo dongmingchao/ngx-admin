@@ -12,7 +12,7 @@ import {NbInputModule} from '@nebular/theme';
 import {NbIconModule} from '../lib/icon/icon.module';
 
 import {Chat2Component} from './chat.component';
-import {ChatMsgComponent} from './chat-message.component';
+import {ChatMsgComponent} from './chat2-msg.component';
 import {Chat2FormComponent} from './chat-form.component';
 import {Chat2MsgQuoteComponent} from './chat2-msg-quote/chat2-msg-quote.component';
 import {NbChatMessageTextComponent} from './chat-message-text.component';
