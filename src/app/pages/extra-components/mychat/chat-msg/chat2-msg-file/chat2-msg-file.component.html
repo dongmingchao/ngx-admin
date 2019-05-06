@@ -1,7 +1,3 @@
-<nb-chat-message-text [sender]="sender" [date]="date" [message]="message">
-    {{ message }}
-</nb-chat-message-text>
-
 <ng-container *ngIf="readyFiles?.length > 1">
     <div class="message-content-group">
         <a class="file" *ngFor="let file of readyFiles" [href]="file.url" target="_blank">

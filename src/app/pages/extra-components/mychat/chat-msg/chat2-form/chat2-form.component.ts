@@ -16,7 +16,7 @@ import {
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
-import { NbComponentStatus } from '../lib/component-status';
+import { NbComponentStatus } from '../../lib/component-status';
 
 /**
  * Chat form component.
@@ -48,9 +48,9 @@ import { NbComponentStatus } from '../lib/component-status';
  */
 @Component({
   selector: 'chat2-form',
-  templateUrl: './chat2-form/chat2-form.component.html',
+  templateUrl: './chat2-form.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./chat2-form/chat2-form.component.css'],
+  styleUrls: ['./chat2-form.component.css'],
 })
 export class Chat2FormComponent {
 

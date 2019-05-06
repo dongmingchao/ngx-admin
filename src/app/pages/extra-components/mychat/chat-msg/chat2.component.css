@@ -1,3 +1,12 @@
+chat2-msg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
 .header {
   color: #d1d1ff;
   padding: 1.25rem;
@@ -9,4 +18,26 @@
 .header {
   background-color: #00d977;
   color: #ffffff;
+}
+.messages {
+  padding: 1.25rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.scrollable {
+  overflow: auto;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  scrollbar-face-color: #554db3;
+  scrollbar-track-color: #332e73;
 }

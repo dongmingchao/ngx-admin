@@ -13,9 +13,9 @@ import {NbIconModule} from '../lib/icon/icon.module';
 
 import {Chat2Component} from './chat.component';
 import {ChatMsgComponent} from './chat2-msg.component';
-import {Chat2FormComponent} from './chat-form.component';
+import {Chat2FormComponent} from './chat2-form/chat2-form.component';
 import {Chat2MsgQuoteComponent} from './chat2-msg-quote/chat2-msg-quote.component';
-import {NbChatMessageTextComponent} from './chat-message-text.component';
+import {Chat2MsgTextComponent} from './chat2-msg-text/chat2-msg-text.component';
 import {Chat2MsgFileComponent} from './chat2-msg-file/chat2-msg-file.component';
 import {NbChatMessageMapComponent} from './chat-message-map.component';
 import {NbChatOptions} from './chat.options';
@@ -25,7 +25,7 @@ const NB_CHAT_COMPONENTS = [
     Chat2Component,
     ChatMsgComponent,
     Chat2FormComponent,
-    NbChatMessageTextComponent,
+    Chat2MsgTextComponent,
     Chat2MsgFileComponent,
     Chat2MsgQuoteComponent,
     Chat2MsgLinkComponent,

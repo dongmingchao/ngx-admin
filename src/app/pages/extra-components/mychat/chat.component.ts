@@ -5,7 +5,7 @@ import { ChatService } from './chat.service';
 @Component({
   selector: 'ngx-chat',
   templateUrl: 'chat.component.html',
-  styleUrls: ['chat.component.scss'],
+  styleUrls: ['chat.component.css'],
   providers: [ ChatService ],
 })
 export class MyChatComponent {

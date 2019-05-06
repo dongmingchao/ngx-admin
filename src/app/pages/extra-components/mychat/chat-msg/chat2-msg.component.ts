@@ -64,9 +64,10 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
  * chat-message-file-background-color:
  */
 @Component({
-    selector: 'chat-msg',
+    selector: 'chat2-msg',
     templateUrl: './chat2-msg.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['./chat2-msg.component.css'],
 })
 export class ChatMsgComponent {
 

@@ -22,7 +22,7 @@ import {
 import {NbComponentSize} from '../lib/component-size';
 import {NbComponentStatus} from '../lib/component-status';
 import {convertToBoolProperty} from '../lib/helpers';
-import {Chat2FormComponent} from './chat-form.component';
+import {Chat2FormComponent} from './chat2-form/chat2-form.component';
 import {ChatMsgComponent} from './chat2-msg.component';
 
 /**
@@ -149,18 +149,7 @@ import {ChatMsgComponent} from './chat2-msg.component';
 @Component({
     selector: 'chat2',
     styleUrls: ['./chat2.component.css'],
-    template: `
-        <div class="header">{{ title }}</div>
-        <div class="scrollable" #scrollable>
-            <div class="messages">
-                <ng-content select=".message"></ng-content>
-                <p class="no-messages" *ngIf="!messages?.length">No messages yet.</p>
-            </div>
-        </div>
-        <div class="form">
-            <ng-content select="chat2-form"></ng-content>
-        </div>
-    `,
+    templateUrl: './chat2.component.html',
 })
 export class Chat2Component implements OnChanges, AfterContentInit, AfterViewInit {
 
@@ -193,7 +182,9 @@ export class Chat2Component implements OnChanges, AfterContentInit, AfterViewIni
     protected _scrollBottom: boolean = true;
 
     @ViewChild('scrollable') scrollable: ElementRef;
-    @ContentChildren(ChatMsgComponent) messages: QueryList<ChatMsgComponent>;
+    // @ContentChildren(ChatMsgComponent) messages: QueryList<ChatMsgComponent>;
+    @Input() messages;
+    @Input() sendMessage;
     @ContentChild(Chat2FormComponent) chatForm: Chat2FormComponent;
 
     ngOnChanges(changes: SimpleChanges) {
@@ -207,12 +198,6 @@ export class Chat2Component implements OnChanges, AfterContentInit, AfterViewIni
     }
 
     ngAfterViewInit() {
-        this.messages.changes
-            .subscribe((messages) => {
-                this.messages = messages;
-                this.updateView();
-            });
-
         this.updateView();
     }
 

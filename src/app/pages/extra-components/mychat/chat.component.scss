@@ -9,7 +9,7 @@
     display: flex;
   }
 
-  nb-chat {
+  chat2 {
     margin: 3rem auto 0;
     width: 500px;
 
@@ -36,13 +36,13 @@
   }
 
   @include media-breakpoint-down(xxl) {
-    nb-chat {
+    chat2 {
       width: 400px;
     }
   }
 
   @include media-breakpoint-down(md) {
-    nb-chat {
+    chat2 {
       width: 400px;
     }
 
@@ -52,7 +52,7 @@
   }
 
   @include media-breakpoint-down(is) {
-    nb-chat {
+    chat2 {
       width: 300px;
     }
   }

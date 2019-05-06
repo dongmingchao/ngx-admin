@@ -1,0 +1,21 @@
+<div class="header">{{ title }}</div>
+<div class="scrollable" #scrollable>
+    <div class="messages">
+        <chat2-msg class='message' *ngFor="let msg of messages"
+                   [type]="msg.type"
+                   [message]="msg.text"
+                   [reply]="msg.reply"
+                   [sender]="msg.user.name"
+                   [date]="msg.date"
+                   [files]="msg.files"
+                   [quote]="msg.quote"
+                   [link]="msg.link"
+                   [latitude]="msg.latitude"
+                   [longitude]="msg.longitude" [avatar]="msg.user.avatar">
+        </chat2-msg>
+        <p class="no-messages" *ngIf="!messages?.length">No messages yet.</p>
+    </div>
+</div>
+<div class="form">
+    <ng-content select="chat2-form"></ng-content>
+</div>
