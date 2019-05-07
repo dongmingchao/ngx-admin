@@ -19,3 +19,18 @@ p {
     color: #a1a1e5;
     margin-bottom: 0.5rem;
 }
+
+:host-context(.reply) .text {
+    border-radius: 0.5rem 0 0.5rem 0.5rem;
+}
+
+:host-context(.reply) .text {
+    background: #494299;
+    color: #d1d1ff;
+}
+
+:host-context(.reply) {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+}

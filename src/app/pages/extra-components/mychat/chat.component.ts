@@ -27,6 +27,7 @@ export class MyChatComponent {
     this.messages.push({
       text: event.message,
       date: new Date(),
+      withAvatar: true,
       reply: true,
       type: files.length ? 'file' : 'text',
       files: files,

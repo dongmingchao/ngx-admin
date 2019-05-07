@@ -20,6 +20,7 @@ export const messages = [
     {
         text: '我是小智，所有知识产权问题我都能替你解答，试着问我',
         reply: false,
+        withAvatar: true,
         date: new Date(),
         user: {
             name: 'John Doe',
@@ -27,25 +28,6 @@ export const messages = [
         },
     },
     {
-        text: 'Hey looks at that pic I just found!',
-        reply: true,
-        date: new Date(),
-        type: 'file',
-        files: [
-            {
-                url: 'https://i.gifer.com/no.gif',
-                type: 'image/jpeg',
-                icon: false,
-            },
-        ],
-        user: {
-            name: 'John Doe',
-            avatar: '',
-        },
-    },
-    {
-        text: 'What do you mean by that?',
-        reply: true,
         date: new Date(),
         type: 'link',
         quote: '1. 什么是专利',
@@ -56,8 +38,6 @@ export const messages = [
         },
     },
     {
-        text: 'What do you mean by that?',
-        reply: true,
         date: new Date(),
         type: 'link',
         quote: '2. 什么是商标',
@@ -68,12 +48,25 @@ export const messages = [
         },
     },
     {
-        text: 'What do you mean by that?',
-        reply: true,
         date: new Date(),
         type: 'link',
         quote: '2. 什么是著作权',
         link: 'https://www.baidu.com/s?wd=什么是著作权',
+        user: {
+            name: 'John Doe',
+            avatar: '',
+        },
+    },
+    {
+        date: new Date(),
+        type: 'file',
+        files: [
+            {
+                url: 'https://i.gifer.com/no.gif',
+                type: 'image/jpeg',
+                icon: false,
+            },
+        ],
         user: {
             name: 'John Doe',
             avatar: '',

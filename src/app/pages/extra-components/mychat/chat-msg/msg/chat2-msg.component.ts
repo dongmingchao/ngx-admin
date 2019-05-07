@@ -92,7 +92,7 @@ export class ChatMsgComponent {
     }
 
     protected _reply: boolean = false;
-
+    @Input() withAvatar: boolean;
     /**
      * Message sender
      * @type {string}

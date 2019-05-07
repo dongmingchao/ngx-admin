@@ -1,0 +1,9 @@
+p.link {
+    font-style: italic;
+    font-size: 0.875rem;
+    background: #493349;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}

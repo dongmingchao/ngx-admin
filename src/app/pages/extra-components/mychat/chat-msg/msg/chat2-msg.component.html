@@ -1,9 +1,9 @@
-<div class="avatar" [style.background-image]="avatarStyle" [style.visibility]="reply?'hidden':'unset'">
+<div class="avatar" [style.background-image]="avatarStyle" [style.visibility]="withAvatar?'unset':'hidden'">
     <ng-container *ngIf="!avatarStyle">
         {{ getInitials() }}
     </ng-container>
 </div>
-<div class="message">
+<div class="message" [class.reply]="reply">
     <ng-container [ngSwitch]="type">
 
         <chat2-msg-file *ngSwitchCase="'file'"
@@ -15,6 +15,9 @@
         <chat2-msg-link *ngSwitchCase="'link'"
                         [sender]="sender" [date]="date" [message]="message" [quote]="quote" [link]="link">
         </chat2-msg-link>
+        <chat2-msg-btn *ngSwitchCase="'btn'"
+                       [sender]="sender" [date]="date" [message]="message" [quote]="quote" [link]="link">
+        </chat2-msg-btn>
         <nb-chat-message-map *ngSwitchCase="'map'"
                              [sender]="sender" [date]="date"
                              [message]="message" [latitude]="latitude" [longitude]="longitude">

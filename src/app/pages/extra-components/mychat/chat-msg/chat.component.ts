@@ -16,14 +16,15 @@ import {
     ContentChild,
     SimpleChanges,
     AfterContentInit,
-    OnChanges,
+    OnChanges, AfterViewChecked, IterableDiffer, IterableDiffers,
 } from '@angular/core';
 
 import {NbComponentSize} from '../lib/component-size';
 import {NbComponentStatus} from '../lib/component-status';
 import {convertToBoolProperty} from '../lib/helpers';
 import {Chat2FormComponent} from './chat2-form/chat2-form.component';
-import {ChatMsgComponent} from './chat2-msg.component';
+import {ChatMsgComponent} from './msg/chat2-msg.component';
+import {from} from 'rxjs';
 
 /**
  * Conversational UI collection - a set of components for chat-like UI construction.
@@ -151,7 +152,7 @@ import {ChatMsgComponent} from './chat2-msg.component';
     styleUrls: ['./chat2.component.css'],
     templateUrl: './chat2.component.html',
 })
-export class Chat2Component implements OnChanges, AfterContentInit, AfterViewInit {
+export class Chat2Component implements OnChanges, AfterContentInit, AfterViewInit, AfterViewChecked {
 
     @Input() title: string;
 
@@ -182,10 +183,14 @@ export class Chat2Component implements OnChanges, AfterContentInit, AfterViewIni
     protected _scrollBottom: boolean = true;
 
     @ViewChild('scrollable') scrollable: ElementRef;
-    // @ContentChildren(ChatMsgComponent) messages: QueryList<ChatMsgComponent>;
     @Input() messages;
     @Input() sendMessage;
     @ContentChild(Chat2FormComponent) chatForm: Chat2FormComponent;
+    itdiffer: IterableDiffer<[]>;
+
+    constructor(private _itdiffer: IterableDiffers) {
+        this.itdiffer = _itdiffer.find([]).create(null);
+    }
 
     ngOnChanges(changes: SimpleChanges) {
         if ('status' in changes) {
@@ -195,6 +200,11 @@ export class Chat2Component implements OnChanges, AfterContentInit, AfterViewIni
 
     ngAfterContentInit() {
         this.updateFormStatus();
+    }
+
+    ngAfterViewChecked(): void {
+        const change = this.itdiffer.diff(this.messages);
+        if (change) this.updateView();
     }
 
     ngAfterViewInit() {
