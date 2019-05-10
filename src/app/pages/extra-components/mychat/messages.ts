@@ -50,8 +50,32 @@ export const messages = [
     {
         date: new Date(),
         type: 'link',
-        quote: '2. 什么是著作权',
+        quote: '3. 什么是著作权',
         link: 'https://www.baidu.com/s?wd=什么是著作权',
+        user: {
+            name: 'John Doe',
+            avatar: '',
+        },
+    },
+    {
+        date: new Date(),
+        type: 'btn',
+        quote: '什么是著作权',
+        options: {
+            func: 'setInputValue',
+        },
+        user: {
+            name: 'John Doe',
+            avatar: '',
+        },
+    },
+    {
+        date: new Date(),
+        type: 'btn',
+        quote: '点我发送“你好”',
+        options: {
+            func: 'sendMessage',
+        },
         user: {
             name: 'John Doe',
             avatar: '',

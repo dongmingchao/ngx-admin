@@ -11,6 +11,7 @@
                 <chat2 title="Nebular Conversational UI"
                        size="large"
                        status="success"
+                       [service]="btnService"
                        [messages]="messages">
                     <chat2-form class='form' (send)="sendMessage($event)" [dropFiles]="true"></chat2-form>
                 </chat2>

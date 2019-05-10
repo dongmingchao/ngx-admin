@@ -11,6 +11,9 @@
                    [files]="msg.files"
                    [quote]="msg.quote"
                    [link]="msg.link"
+                   [dom]="chatForm"
+                   [options]="msg.options"
+                   [service]="service"
                    [latitude]="msg.latitude"
                    [longitude]="msg.longitude" [avatar]="msg.user.avatar">
         </chat2-msg>
@@ -18,5 +21,5 @@
     </div>
 </div>
 <div class="form">
-    <ng-content select="chat2-form"></ng-content>
+    <ng-content select="chat2-form" ></ng-content>
 </div>

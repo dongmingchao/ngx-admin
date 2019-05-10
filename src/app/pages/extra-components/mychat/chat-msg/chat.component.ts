@@ -23,8 +23,6 @@ import {NbComponentSize} from '../lib/component-size';
 import {NbComponentStatus} from '../lib/component-status';
 import {convertToBoolProperty} from '../lib/helpers';
 import {Chat2FormComponent} from './chat2-form/chat2-form.component';
-import {ChatMsgComponent} from './msg/chat2-msg.component';
-import {from} from 'rxjs';
 
 /**
  * Conversational UI collection - a set of components for chat-like UI construction.
@@ -184,7 +182,6 @@ export class Chat2Component implements OnChanges, AfterContentInit, AfterViewIni
 
     @ViewChild('scrollable') scrollable: ElementRef;
     @Input() messages;
-    @Input() sendMessage;
     @ContentChild(Chat2FormComponent) chatForm: Chat2FormComponent;
     itdiffer: IterableDiffer<[]>;
 
@@ -226,6 +223,9 @@ export class Chat2Component implements OnChanges, AfterContentInit, AfterViewIni
             this.chatForm.setStatus(this.status);
         }
     }
+
+
+    @Input() service: any;
 
     @HostBinding('class.size-tiny')
     get tiny(): boolean {

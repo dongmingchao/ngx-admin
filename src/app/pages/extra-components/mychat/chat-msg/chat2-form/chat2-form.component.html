@@ -17,7 +17,7 @@
            (blur)="inputFocus = false"
            (mouseenter)="inputHover = true"
            (mouseleave)="inputHover = false"
-           [(ngModel)]="message"
+           [formControl]="_message"
            [class.with-button]="showButton"
            type="text"
            placeholder="{{ fileOver ? 'Drop file to send' : 'Type a message' }}"

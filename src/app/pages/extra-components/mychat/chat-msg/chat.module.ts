@@ -5,6 +5,7 @@
  */
 
 import {ModuleWithProviders, NgModule} from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {NbSharedModule} from '@nebular/theme/components/shared/shared.module';
 import {NbButtonModule} from '@nebular/theme';
@@ -40,6 +41,7 @@ const NB_CHAT_COMPONENTS = [
         NbIconModule,
         NbInputModule,
         NbButtonModule,
+        ReactiveFormsModule
     ],
     declarations: [
         ...NB_CHAT_COMPONENTS,

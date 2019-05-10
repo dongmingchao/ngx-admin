@@ -5,18 +5,19 @@
  */
 
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  HostBinding,
-  HostListener,
-  Input,
-  Output,
+    ChangeDetectionStrategy,
+    ChangeDetectorRef,
+    Component, ElementRef,
+    EventEmitter,
+    HostBinding,
+    HostListener,
+    Input,
+    Output,
 } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 
-import { NbComponentStatus } from '../../lib/component-status';
+import {NbComponentStatus} from '../../lib/component-status';
+import {FormControl} from '@angular/forms';
 
 /**
  * Chat form component.
@@ -47,134 +48,142 @@ import { NbComponentStatus } from '../../lib/component-status';
  * ```
  */
 @Component({
-  selector: 'chat2-form',
-  templateUrl: './chat2-form.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./chat2-form.component.css'],
+    selector: 'chat2-form',
+    templateUrl: './chat2-form.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['./chat2-form.component.css'],
 })
 export class Chat2FormComponent {
 
-  status: NbComponentStatus | '' = '';
-  inputFocus: boolean = false;
-  inputHover: boolean = false;
+    status: NbComponentStatus | '' = '';
+    inputFocus: boolean = false;
+    inputHover: boolean = false;
 
-  droppedFiles: any[] = [];
-  imgDropTypes = ['image/png', 'image/jpeg', 'image/gif'];
+    droppedFiles: any[] = [];
+    imgDropTypes = ['image/png', 'image/jpeg', 'image/gif'];
 
-  /**
-   * Predefined message text
-   * @type {string}
-   */
-  @Input() message: string = '';
+    /**
+     * Predefined message text
+     * @type {string}
+     */
+    @Input() _message = new FormControl('');
 
-  /**
-   * Send button title
-   * @type {string}
-   */
-  @Input() buttonTitle: string = '';
+    get message() {
+        return this._message.value;
+    }
 
-  /**
-   * Send button icon, shown if `buttonTitle` is empty
-   * @type {string}
-   */
-  @Input() buttonIcon: string = 'paper-plane-outline';
+    set message(val) {
+        this._message.patchValue(val);
+    }
 
-  /**
-   * Show send button
-   * @type {boolean}
-   */
-  @Input() showButton: boolean = true;
+    /**
+     * Send button title
+     * @type {string}
+     */
+    @Input() buttonTitle: string = '';
 
-  /**
-   * Show send button
-   * @type {boolean}
-   */
-  @Input() dropFiles: boolean = false;
+    /**
+     * Send button icon, shown if `buttonTitle` is empty
+     * @type {string}
+     */
+    @Input() buttonIcon: string = 'paper-plane-outline';
 
-  /**
-   *
-   * @type {EventEmitter<{ message: string, files: File[] }>}
-   */
-  @Output() send = new EventEmitter<{ message: string, files: File[] }>();
+    /**
+     * Show send button
+     * @type {boolean}
+     */
+    @Input() showButton: boolean = true;
 
-  @HostBinding('class.file-over') fileOver = false;
+    /**
+     * Show send button
+     * @type {boolean}
+     */
+    @Input() dropFiles: boolean = false;
 
-  constructor(protected cd: ChangeDetectorRef, protected domSanitizer: DomSanitizer) {
-  }
+    /**
+     *
+     * @type {EventEmitter<{ message: string, files: File[] }>}
+     */
+    @Output() send = new EventEmitter<{ message: string, files: File[] }>();
 
-  @HostListener('drop', ['$event'])
-  onDrop(event: any) {
-    if (this.dropFiles) {
-      event.preventDefault();
-      event.stopPropagation();
+    @HostBinding('class.file-over') fileOver = false;
 
-      this.fileOver = false;
-      if (event.dataTransfer && event.dataTransfer.files) {
+    constructor(protected cd: ChangeDetectorRef, protected domSanitizer: DomSanitizer, protected el: ElementRef) {
+    }
 
-        for (const file of event.dataTransfer.files) {
-          const res = file;
+    @HostListener('drop', ['$event'])
+    onDrop(event: any) {
+        if (this.dropFiles) {
+            event.preventDefault();
+            event.stopPropagation();
 
-          if (this.imgDropTypes.includes(file.type)) {
-            const fr = new FileReader();
-            fr.onload = (e: any) => {
-              res.src = e.target.result;
-              res.urlStyle = this.domSanitizer.bypassSecurityTrustStyle(`url(${res.src})`);
-              this.cd.detectChanges();
-            };
+            this.fileOver = false;
+            if (event.dataTransfer && event.dataTransfer.files) {
 
-            fr.readAsDataURL(file);
-          }
-          this.droppedFiles.push(res);
+                for (const file of event.dataTransfer.files) {
+                    const res = file;
+
+                    if (this.imgDropTypes.includes(file.type)) {
+                        const fr = new FileReader();
+                        fr.onload = (e: any) => {
+                            res.src = e.target.result;
+                            res.urlStyle = this.domSanitizer.bypassSecurityTrustStyle(`url(${res.src})`);
+                            this.cd.detectChanges();
+                        };
+
+                        fr.readAsDataURL(file);
+                    }
+                    this.droppedFiles.push(res);
+                }
+            }
         }
-      }
-    }
-  }
-
-  removeFile(file) {
-    const index = this.droppedFiles.indexOf(file);
-    if (index >= 0) {
-      this.droppedFiles.splice(index, 1);
-    }
-  }
-
-  @HostListener('dragover')
-  onDragOver() {
-    if (this.dropFiles) {
-      this.fileOver = true;
-    }
-  }
-
-  @HostListener('dragleave')
-  onDragLeave() {
-    if (this.dropFiles) {
-      this.fileOver = false;
-    }
-  }
-
-  sendMessage() {
-    if (this.droppedFiles.length || String(this.message).trim().length) {
-      this.send.emit({ message: this.message, files: this.droppedFiles });
-      this.message = '';
-      this.droppedFiles = [];
-    }
-  }
-
-  setStatus(status: NbComponentStatus): void {
-    if (this.status !== status) {
-      this.status = status;
-      this.cd.detectChanges();
-    }
-  }
-
-  getInputStatus(): NbComponentStatus | '' {
-    if (this.fileOver) {
-      return this.status || 'primary';
     }
 
-    if (this.inputFocus || this.inputHover) {
-      return this.status;
+    removeFile(file) {
+        const index = this.droppedFiles.indexOf(file);
+        if (index >= 0) {
+            this.droppedFiles.splice(index, 1);
+        }
     }
 
-    return '';
-  }
+    @HostListener('dragover')
+    onDragOver() {
+        if (this.dropFiles) {
+            this.fileOver = true;
+        }
+    }
+
+    @HostListener('dragleave')
+    onDragLeave() {
+        if (this.dropFiles) {
+            this.fileOver = false;
+        }
+    }
+
+    sendMessage() {
+        if (this.droppedFiles.length || String(this.message).trim().length) {
+            this.send.emit({message: this.message, files: this.droppedFiles});
+            this.message = '';
+            this.droppedFiles = [];
+        }
+    }
+
+    setStatus(status: NbComponentStatus): void {
+        if (this.status !== status) {
+            this.status = status;
+            this.cd.detectChanges();
+        }
+    }
+
+    getInputStatus(): NbComponentStatus | '' {
+        if (this.fileOver) {
+            return this.status || 'primary';
+        }
+
+        if (this.inputFocus || this.inputHover) {
+            return this.status;
+        }
+
+        return '';
+    }
 }

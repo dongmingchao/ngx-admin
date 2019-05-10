@@ -4,7 +4,7 @@
  * Licensed under the MIT License. See License.txt in the project root for license information.
  */
 
-import {ChangeDetectionStrategy, Component, HostBinding, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input} from '@angular/core';
 
 function convertToBoolProperty(val: any): boolean {
     if (typeof val === 'string') {
@@ -163,4 +163,8 @@ export class ChatMsgComponent {
 
         return '';
     }
+
+    @Input() dom: ElementRef;
+    @Input() options: any;
+    @Input() service: any;
 }

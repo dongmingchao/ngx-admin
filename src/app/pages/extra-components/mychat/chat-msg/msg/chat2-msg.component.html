@@ -13,10 +13,12 @@
                          [sender]="sender" [date]="date" [message]="message" [quote]="quote">
         </chat2-msg-quote>
         <chat2-msg-link *ngSwitchCase="'link'"
-                        [sender]="sender" [date]="date" [message]="message" [quote]="quote" [link]="link">
+                        [sender]="sender" [date]="date" [message]="message"
+                        [quote]="quote" [link]="link">
         </chat2-msg-link>
         <chat2-msg-btn *ngSwitchCase="'btn'"
-                       [sender]="sender" [date]="date" [message]="message" [quote]="quote" [link]="link">
+                       [sender]="sender" [date]="date" [message]="message"
+                       [quote]="quote" [link]="link" [view]="{form: dom}" [options]="options" [service]="service">
         </chat2-msg-btn>
         <nb-chat-message-map *ngSwitchCase="'map'"
                              [sender]="sender" [date]="date"
