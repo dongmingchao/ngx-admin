@@ -2,13 +2,13 @@ import {ButtonService} from './chat-msg/chat2-msg-btn/service';
 
 export class BtnService extends ButtonService {
 
-    registeFunctions = ['setInputValue', 'sendMessage'];
+    registeFunctions = ['setInputValue', 'sendHello'];
 
     setInputValue() {
         this.view.form.message = this.host.quote;
     }
 
-    sendMessage() {
+    sendHello() {
         this.view.form.message = this.host.quote;
         this.view.form.sendMessage();
     }

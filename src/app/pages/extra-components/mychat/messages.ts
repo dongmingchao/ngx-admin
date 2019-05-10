@@ -29,9 +29,11 @@ export const messages = [
     },
     {
         date: new Date(),
-        type: 'link',
-        quote: '1. 什么是专利',
-        link: 'https://www.baidu.com/s?wd=什么是专利',
+        type: 'btn',
+        quote: '什么是专利',
+        options: {
+            func: 'sendHello',
+        },
         user: {
             name: 'John Doe',
             avatar: '',
@@ -39,19 +41,11 @@ export const messages = [
     },
     {
         date: new Date(),
-        type: 'link',
-        quote: '2. 什么是商标',
-        link: 'https://www.baidu.com/s?wd=什么是商标',
-        user: {
-            name: 'John Doe',
-            avatar: '',
+        type: 'btn',
+        quote: '什么是商标',
+        options: {
+            func: 'sendHello',
         },
-    },
-    {
-        date: new Date(),
-        type: 'link',
-        quote: '3. 什么是著作权',
-        link: 'https://www.baidu.com/s?wd=什么是著作权',
         user: {
             name: 'John Doe',
             avatar: '',
@@ -62,7 +56,7 @@ export const messages = [
         type: 'btn',
         quote: '什么是著作权',
         options: {
-            func: 'setInputValue',
+            func: 'sendHello',
         },
         user: {
             name: 'John Doe',
@@ -71,10 +65,20 @@ export const messages = [
     },
     {
         date: new Date(),
+        type: 'link',
+        quote: '通向百度的超链接',
+        link: 'https://www.baidu.com/s?wd=什么是专利',
+        user: {
+            name: 'John Doe',
+            avatar: '',
+        },
+    },
+    {
+        date: new Date(),
         type: 'btn',
-        quote: '点我发送“你好”',
+        quote: '把内容放到输入框里',
         options: {
-            func: 'sendMessage',
+            func: 'setInputValue',
         },
         user: {
             name: 'John Doe',
